@@ -22,7 +22,6 @@ jobs:
       with:
         style: '' # no check formatting
         tidy-checks: 'bugprone-*,performance-*,modernize-*,clang-analyzer-*'
-        thread-comments: true
         database: 'build'
 
     - name: Build
