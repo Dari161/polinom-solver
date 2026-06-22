@@ -21,7 +21,7 @@ namespace Solver {
 
 	double Polynom::operator() (const double x) const {
 		double ret = 0;
-		for (int i = 0; i < coefs.size(); ++i) {
+		for (std::size_t i = 0; i < coefs.size(); ++i) {
 			ret *= x;
 			ret += coefs[i];
 		}
@@ -30,7 +30,7 @@ namespace Solver {
 
 	const Polynom Polynom::derivate() const {
 		std::vector<double> ret(coefs.size() - 1);
-		for (int i = 0; i < coefs.size() - 1; ++i) {
+		for (std::size_t i = 0; i < coefs.size() - 1; ++i) {
 			ret[i] = coefs[i] * (coefs.size() - 1 - i);
 		}
 		return Polynom(ret);
@@ -40,7 +40,7 @@ namespace Solver {
 		// divides the polynom by (x - x0) using Horner's method, without calculating the remainder
 		std::vector<double> ret(coefs.size() - 1);
 		double tmp = 0;
-		for (int i = 0; i < coefs.size() - 1; ++i) {
+		for (std::size_t i = 0; i < coefs.size() - 1; ++i) {
 			tmp = tmp * x0 + coefs[i];
 			ret[i] = tmp;
 		}
