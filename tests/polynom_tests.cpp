@@ -3,13 +3,55 @@
 #include "Polynom.h"
 #include <vector>
 #include <stdexcept>
-#include "test_constants.h"
+#include "Constans.h"
 
 namespace PolynomsolverTests {
 
     using Solver::Polynom;
-    using ::testing::Pointwise;
-    using ::testing::DoubleNear;
+    using Solver::EPSILON;
+
+    // ==========================================
+    // EQUALITY TESTS
+    // ==========================================
+
+    TEST(PolynomEqualityTest, IdenticalPolynoms) {
+        Polynom p1({ 1.0, 2.0, 3.0 });
+        Polynom p2({ 1.0, 2.0, 3.0 });
+        ASSERT_EQ(p1, p2);
+    }
+
+    TEST(PolynomEqualityTest, DifferentValues) {
+        Polynom p1({ 1.0, 2.0, 3.0 });
+        Polynom p3({ 1.0, 2.0, 4.0 });
+        ASSERT_NE(p1, p3);
+    }
+
+    TEST(PolynomEqualityTest, DifferentSizes) {
+        Polynom p1({ 1.0, 2.0, 3.0 });
+        Polynom p4({ 1.0, 2.0 });
+        ASSERT_NE(p1, p4);
+    }
+
+    TEST(PolynomEqualityTest, EpsilonBoundaryEqual) {
+        Polynom p1({ 1.0, 2.0, 3.0 });
+        Polynom p5({ 1.0, 2.0, 3.0 + (EPSILON / 2.0) });
+        ASSERT_EQ(p1, p5);
+    }
+
+    TEST(PolynomEqualityTest, EpsilonBoundaryNotEqual) {
+        Polynom p1({ 1.0, 2.0, 3.0 });
+        Polynom p6({ 1.0, 2.0, 3.0 + (EPSILON * 2.0) });
+        ASSERT_NE(p1, p6);
+    }
+
+    TEST(PolynomEqualityTest, NotEqualOperator) {
+        Polynom p1({ 1.0, 2.0 });
+        Polynom p2({ 1.0, 2.0 });
+        Polynom p3({ 1.0, 3.0 });
+
+        EXPECT_FALSE(p1 != p2);
+        EXPECT_TRUE(p1 != p3);
+    }
 
     // ==========================================
     // FUNCTION EVALUATION TESTS

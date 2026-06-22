@@ -3,25 +3,6 @@
 #include <algorithm>
 
 namespace Solver {
-    using Polynom = std::vector<double>;
-
-    // coefficients are reversed, for example a+bx+cx^2 = 0
-    double PolynomSolver::calcVal(const Polynom& coefs, const double x) {
-        double ret = 0;
-        for (int i = 0; i < coefs.size(); ++i) {
-            ret += coefs[i] * pow(x, i);
-        }
-        return ret;
-    }
-
-    // example (a+bx+cx^2+dx^3)' = b+2cx+3dx^2
-    Polynom PolynomSolver::derivate(const Polynom& coefs) {
-        Polynom ret;
-        for (int i = 1; i < coefs.size(); ++i) {
-            ret.push_back(coefs[i] * i);
-        }
-        return ret;
-    }
 
     void PolynomSolver::getDerivatives() {
         der1 = derivate(coefs); // first derivative
@@ -36,7 +17,7 @@ namespace Solver {
 
         // TODO: ez lehet nem jó
         for (int i = 0; i < maxIterations; ++i) {
-            if (abs(calcVal(coefs, x)) < tolerance) {
+            if (abs(calcVal(coefs, x)) < EPSILON) {
                 return { true, x };
             }
 
@@ -45,11 +26,6 @@ namespace Solver {
         }
 
         return { false, x }; // x is no solution here
-    }
-
-    void PolynomSolver::divideBy(const double x) {
-        // this uses Horner's method
-        //TODO: divide only coefs and than in the caller function of this, call getDerivatives
     }
 }
 

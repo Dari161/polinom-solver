@@ -10,6 +10,7 @@ namespace Solver{
 	public:
 		Polynom(const std::vector<double> coefs) : coefs(coefs) {}
 		bool operator== (const Polynom& other) const;
+		bool Polynom::operator!=(const Polynom& other) const;
 		double operator() (const double x) const;
 		const Polynom derivate() const;
 		const Polynom divide(const double x0) const;

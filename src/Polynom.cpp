@@ -1,17 +1,22 @@
 #include "Polynom.h"
 #include <vector>
 #include "Constans.h"
+#include <cmath>
 
 namespace Solver {
 
 	bool Polynom::operator== (const Polynom& other) const {
 		if (coefs.size() != other.coefs.size()) return false;
-		for (int i = 0; i < coefs.size(); ++i) {
-			if (abs(coefs[i] - other.coefs[i]) >= EPSILON) {
+		for (std::size_t i = 0; i < coefs.size(); ++i) {
+			if (std::abs(coefs[i] - other.coefs[i]) >= EPSILON) {
 				return false;
 			}
 		}
 		return true;
+	}
+
+	bool Polynom::operator!=(const Polynom& other) const {
+		return !(*this == other);
 	}
 
 	double Polynom::operator() (const double x) const {
