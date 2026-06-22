@@ -2,18 +2,21 @@
 #define POLYNOM_H
 
 #include <vector>
+#include <string>
 
 namespace Solver{
 	class Polynom {
 	private:
-		const std::vector<double> coefs; // coefficients are stored in order, so the first double is the coefficient of the highest degree element, and the last coefficient is the constant (zeroth degree)
+		std::vector<double> coefs; // coefficients are stored in order, so the first double is the coefficient of the highest degree element, and the last coefficient is the constant (zeroth degree)
 	public:
-		Polynom(const std::vector<double> coefs) : coefs(coefs) {}
+		Polynom(const std::vector<double>& coefs) : coefs(coefs) {}
 		bool operator== (const Polynom& other) const;
 		bool operator!=(const Polynom& other) const;
 		double operator() (const double x) const;
 		const Polynom derivate() const;
 		const Polynom divide(const double x0) const;
+		std::vector<double> getCoefs() const { return coefs; }
+		std::string Polynom::toString() const;
 	};
 }
 

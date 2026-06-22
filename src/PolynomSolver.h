@@ -1,30 +1,25 @@
 #ifndef POLYNOMSOLVER_H
 #define POLYNOMSOLVER_H
 
+#include "Polynom.h"
+#include <vector>
+#include <utility>
+
 namespace Solver {
-    using Polynom = std::vector<double>;
-
-    class PolynomSolver
-    {
+    class PolynomSolver {
     private:
-        Polynom coefs, der1, der2;
+        Polynom p;
+        static constexpr std::size_t MAX_ITERATIONS = 100;
 
-        double tolerance = 10e-6;
+        // Halley's method
+        std::pair<bool, double> approxSolution(double guess, const Polynom& current_p,
+            const Polynom& d1, const Polynom& d2) const;
 
-        int maxIterations = 50;
+    public:
+        explicit PolynomSolver(const Polynom& p) : p(p) {}
 
-        // coefficients are reversed, for example a+bx+cx^2 = 0
-        static double calcVal(const Polynom& coefs, const double x);
-
-        // example (a+bx+cx^2+dx^3)' = b+2cx+3dx^2
-        static Polynom derivate(const Polynom& coefs);
-
-        void getDerivatives();
-
-        // return found and value
-        std::pair<bool, double> approxSolution(const double A, const double B) const;
-
-        void divideBy(const double x);
+        // finds discrete roots (so if the polynom is 0, which has infinite many solutions, it will return zero solutions)
+        std::vector<double> PolynomSolver::findSolutions() const;
     };
 }
 

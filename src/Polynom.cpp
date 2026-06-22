@@ -1,6 +1,7 @@
 #include "Polynom.h"
 #include <vector>
-#include "Constans.h"
+#include <string>
+#include "Constants.h"
 #include <cmath>
 
 namespace Solver {
@@ -45,5 +46,34 @@ namespace Solver {
 			ret[i] = tmp;
 		}
 		return Polynom(ret);
+	}
+
+	// helper
+	std::string formatDouble(const double val) {
+		std::string s = std::to_string(val);
+		s.erase(s.find_last_not_of('0') + 1, std::string::npos);
+		if (s.back() == '.') s.pop_back();
+		return s;
+	}
+
+	std::string Polynom::toString() const {
+		std::string res = "";
+		bool empty = true;
+
+		for (size_t i = 0; i < coefs.size(); ++i) {
+			if (std::abs(coefs[i]) < EPSILON) continue;
+
+			res += formatDouble(coefs[i]);
+
+			size_t p = coefs.size() - 1 - i;
+			if (p > 0) {
+				res += "*x";
+				if (p > 1) res += "^" + std::to_string(p);
+			}
+			res += " ";
+			empty = false;
+		}
+
+		return empty ? "0" : res;
 	}
 }

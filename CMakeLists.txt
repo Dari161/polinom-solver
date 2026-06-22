@@ -28,9 +28,10 @@ FetchContent_MakeAvailable(googletest)
 
 # Executable
 add_executable(polynomsolver_app
-    #src/PolynomSolver.cpp
+    src/PolynomSolver.cpp
     src/Polynom.cpp
     src/main.cpp
- "src/Constans.h")
+    src/Constants.h
+)
 
 add_subdirectory(tests)

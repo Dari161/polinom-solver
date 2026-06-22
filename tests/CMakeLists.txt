@@ -12,10 +12,11 @@ FetchContent_MakeAvailable(googletest)
 
 # Build the test executable along with the source files
 add_executable(run_tests 
-    #polynomsolver_tests.cpp
+    polynomsolver_tests.cpp
     polynom_tests.cpp
-    #../src/PolynomSolver.cpp
+    ../src/PolynomSolver.cpp
     ../src/Polynom.cpp
+    ../src/Constants.h
 )
 
 # Include directories for header files
