@@ -17,7 +17,7 @@ Before searching for roots, the solver calculates a strict interval $[-R, R]$ th
 $$R = 1 + \frac{\max(|c_0|, |c_1|, \dots, |c_{n-1}|)}{|c_n|}$$
 
 
-* Reference: [Cauchy's Bound Theorem on Wikipedia](https://www.google.com/search?q=https://en.wikipedia.org/wiki/Geometrical_properties_of_polynomial_roots%23Cauchy%27s_bound)
+* Reference: [Cauchy's Bound Theorem on Wikipedia](https://en.wikipedia.org/wiki/Geometrical_properties_of_polynomial_roots#Cauchy's_bound)
 
 ### 2. Isolation: Rolle's Theorem
 
@@ -31,7 +31,7 @@ To find all roots without missing any, the solver recursively finds the roots of
 The solver evaluates the boundaries of each monotonic interval. If the polynomial changes signs between two critical points, a single unique root is guaranteed to exist within that segment.
 
 * **Theorem:** If a continuous function satisfies $f(a) \cdot f(b) < 0$, then there exists at least one $c \in (a, b)$ such that $f(c) = 0$.
-* Reference: [Bolzano's Theorem on Wikipedia](https://www.google.com/search?q=https://en.wikipedia.org/wiki/Intermediate_value_theorem%23Bolzano%27s_theorem)
+* Reference: [Bolzano's Theorem on Wikipedia](https://en.wikipedia.org/wiki/Intermediate_value_theorem)
 
 ### 4. Approximation: Halley's Method
 
