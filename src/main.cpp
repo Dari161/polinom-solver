@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 
+/*
 using namespace std;
 
 double tolerance = 10e-6;
@@ -118,14 +119,17 @@ vector<double> solvePolinom(vector<double> coefs) {
     sort(ret.begin(), ret.end());
     return ret;
 }
+*/
 
 int main() {
     //vector<double> solutions = solvePolinom({-4, 7, -10, -8, 1, 1});
     //vector<double> solutions =  derivate({3, 4, 2, 5});
     //vector<double> solutions = solveEq({ -48, 24, 60 });
 
-    vector<double> solutions = solvePolinom({ 8, 7, -10, -8, 1, 1 });
+    /*vector<double> solutions = solvePolinom({8, 7, -10, -8, 1, 1});
     for (double s : solutions) {
         cout << s << endl;
-    }
+    }*/
+
+    std::cout << "Hello word";
 }
