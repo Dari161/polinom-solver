@@ -19,7 +19,7 @@ namespace Solver {
         explicit PolynomSolver(const Polynom& p) : p(p) {}
 
         // finds discrete roots (so if the polynom is 0, which has infinite many solutions, it will return zero solutions)
-        std::vector<double> PolynomSolver::findSolutions() const;
+        std::vector<double> findSolutions() const;
     };
 }
 

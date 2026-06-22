@@ -16,7 +16,7 @@ namespace Solver{
 		const Polynom derivate() const;
 		const Polynom divide(const double x0) const;
 		std::vector<double> getCoefs() const { return coefs; }
-		std::string Polynom::toString() const;
+		std::string toString() const;
 	};
 }
 
