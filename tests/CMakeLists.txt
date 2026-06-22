@@ -28,4 +28,4 @@ target_link_libraries(run_tests PRIVATE
 )
 
 # Register the test
-add_test(NAME WhitespaceTests COMMAND run_tests)
+add_test(NAME PolynomSolverTests COMMAND run_tests)
